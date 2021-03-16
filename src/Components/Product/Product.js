@@ -1,17 +1,16 @@
-import { TimeToLeave } from "@material-ui/icons";
 import React, { useContext } from "react";
-import { ProductContext } from "../../contexts/ProductContext";
+import { ProductBasketContext } from "../../contexts/ProductBasketContext";
 import "./Product.css";
 
 export default function Product({ id, title, image, price, rating }) {
    //Use Product Context to get and update List of Products in ProductContext Data Layer to show the numer of items in the basket in Header.js
-   const [products, setProducts] = useContext(ProductContext);
+   const [productBasket, setProductBasket] = useContext(ProductBasketContext);
 
    const addToBasket = (e) => {
       e.preventDefault();
 
-      setProducts([
-         ...products,
+      setProductBasket([
+         ...productBasket,
          { id: id, title: title, price: price, rating: rating },
       ]);
    };

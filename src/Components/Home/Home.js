@@ -13,6 +13,7 @@ function Home() {
             ></img>
             <div className="home_row">
                <Product
+                  key="123211341"
                   id="123211341"
                   title="The Lean Startup: How Constant Innovation Creates Radically Successful Business Paperback"
                   price={11.96}
@@ -20,6 +21,7 @@ function Home() {
                   rating={5}
                />
                <Product
+                  key="123211342"
                   id="123211342"
                   title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
                   price={239.0}
@@ -29,6 +31,7 @@ function Home() {
             </div>
             <div className="home_row">
                <Product
+                  key="123211343"
                   id="123211343"
                   title="Garmin Venu, GPS Smartwatch with Touchscreen Display, Light Gold and Navy Blue"
                   price={199.99}
@@ -36,6 +39,7 @@ function Home() {
                   image="https://m.media-amazon.com/images/I/71BZqWrIFoL._AC_UY218_.jpg"
                />
                <Product
+                  key="123211344"
                   id="123211344"
                   title="Amazon Echo (3rd generation} | Smart speaker with Alexa, Charcoal Fabric"
                   price={98.99}
@@ -43,6 +47,7 @@ function Home() {
                   image="https:media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
                />
                <Product
+                  key="123211345"
                   id="123211345"
                   title="New Apple iPad Pro (12.9-inch, Wi-fi, 218GB) - Silver (4th generation)"
                   price={598.0}
@@ -52,6 +57,7 @@ function Home() {
             </div>
             <div className="home_row">
                <Product
+                  key="123211346"
                   id="123211346"
                   title="OnePlus Nord N10 5G Unlocked Smartphone, Midnight Ice​, 90Hz Refresh Rate, 6GB RAM + 128GB storage, US Version, Model BE2026"
                   price={296.99}

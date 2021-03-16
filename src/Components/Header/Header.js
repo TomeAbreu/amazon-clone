@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../contexts/ProductContext";
+import { ProductBasketContext } from "../../contexts/ProductBasketContext";
 
 function Header() {
    //Pull the products list from ProductContext using the useContext
-   const [products] = useContext(ProductContext);
+   const [productBasket] = useContext(ProductBasketContext);
 
    return (
       <div className="header">
@@ -42,7 +42,7 @@ function Header() {
             <div className="header_optionBasket">
                <ShoppingBasketIcon />
                <span className="header_optionLineTwo header_basketCount">
-                  {products.length}
+                  {productBasket.length}
                </span>
             </div>
          </Link>
