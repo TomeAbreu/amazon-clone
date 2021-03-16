@@ -1,6 +1,5 @@
 import "./SubTotal.css";
 import CurrencyFormat from "react-currency-format";
-import { SportsBasketball } from "@material-ui/icons";
 
 const SubTotal = () => {
    return (
