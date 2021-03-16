@@ -11,7 +11,7 @@ export default function Product({ id, title, image, price, rating }) {
 
       setProductBasket([
          ...productBasket,
-         { id: id, title: title, price: price, rating: rating },
+         { id: id, title: title, price: price, rating: rating, image: image },
       ]);
    };
 

@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import "./Checkout.css";
 import SubTotal from "./SubTotal/SubTotal";
+import CheckoutProduct from "./CheckoutProduct/CheckoutProduct";
+import { ProductBasketContext } from "../../contexts/ProductBasketContext";
 
 const Checkout = () => {
+   const [productBasket] = useContext(ProductBasketContext);
+
    return (
       <div className="checkout">
          <div className="checkout_left">
@@ -13,16 +18,16 @@ const Checkout = () => {
 
             <div>
                <h2 className="checkout_title">Your shopping basket</h2>
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
-               {/* BasketItem */}
+               {productBasket.map((product) => (
+                  <CheckoutProduct
+                     key={product.id}
+                     id={product.id}
+                     image={product.image}
+                     title={product.title}
+                     price={product.price}
+                     rating={product.ratinng}
+                  />
+               ))}
             </div>
          </div>
          <div className="checkout_right">
