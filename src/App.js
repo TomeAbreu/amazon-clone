@@ -13,6 +13,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import { Elements } from "@stripe/react-stripe-js";
 /*Import stripe library */
 import { stripePromise } from "./config/stripe";
+import Orders from "./Components/Orders/Orders";
 
 function App() {
    //Use Auth Context to get and update User Context prop to tell if User is login or not
@@ -39,9 +40,12 @@ function App() {
                   {/* Login Component */}
                   <Login></Login>
                </Route>
-               <Route path="/checkout">
+               <Route path="/orders">
                   {/* Header Component */}
                   <Header />
+                  <Orders />
+               </Route>
+               <Route path="/checkout">
                   {/* Checkout Component */}
                   <Checkout />
                </Route>

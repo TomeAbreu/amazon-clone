@@ -11,6 +11,7 @@ import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import axios from "../../config/axios";
+import { db } from "../../config/firebase";
 
 const Payment = () => {
    //Get browser history
@@ -36,6 +37,7 @@ const Payment = () => {
 
       const getClientSecret = async () => {
          try {
+            console.log(getBasketTotalPrice(productBasket));
             const response = await axios({
                method: "post",
                //Stripe expects the total of subitems
@@ -66,9 +68,25 @@ const Payment = () => {
                card: elements.getElement(CardElement),
             },
          });
+
+         console.log(payload.paymentIntent);
+
+         //Create a document inside orders collection of the user with id, basket, amount and created fields
+         db.collection("users")
+            .doc(user?.uid)
+            .collection("orders")
+            .doc(payload.paymentIntent.id)
+            .set({
+               basket: productBasket,
+               amount: payload.paymentIntent.amount,
+               created: payload.paymentIntent.created,
+            });
          console.log(payload);
          setSucceeded(true);
          setError(null);
+
+         //Empty the basket
+         setProductBasket([]);
 
          //Replace User Page to Orders Page
          history.replace("/orders");
