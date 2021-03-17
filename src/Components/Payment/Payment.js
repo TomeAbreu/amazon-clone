@@ -33,16 +33,20 @@ const Payment = () => {
 
    useEffect(() => {
       //Generate stripe client secret everytime the basket changes or when the payment component loads
+
       const getClientSecret = async () => {
-         const response = await axios({
-            method: "post",
-            //Stripe expects the total of subitems
-            url: `/payments/create?total=${
-               getBasketTotalPrice(productBasket) * 100
-            }`,
-         });
-         //Set Client Secret
-         setClientSecret(response.data.clientSecret);
+         try {
+            const response = await axios({
+               method: "post",
+               //Stripe expects the total of subitems
+               url: `/payments/create?total=${
+                  getBasketTotalPrice(productBasket) * 100
+               }`,
+            });
+            console.log(response);
+            //Set Client Secret
+            setClientSecret(response.data.clientSecret);
+         } catch (error) {}
       };
 
       getClientSecret();
@@ -51,7 +55,7 @@ const Payment = () => {
    //Vars for form error and
    //Handle Stripe Payment
    const handlePayment = async (e) => {
-      e.prventDefault();
+      e.preventDefault();
       //Prevent to click Buy Now Button Again
       setProcessing(true);
 
@@ -62,11 +66,12 @@ const Payment = () => {
                card: elements.getElement(CardElement),
             },
          });
+         console.log(payload);
          setSucceeded(true);
          setError(null);
 
          //Replace User Page to Orders Page
-         history.relace("/orders");
+         history.replace("/orders");
       } catch (error) {
          setError(error.message);
       }
@@ -104,8 +109,9 @@ const Payment = () => {
                </div>
                <div className="payment_items">
                   {/*Get Products from the basket */}
-                  {productBasket.map((product) => (
+                  {productBasket.map((product, index) => (
                      <CheckoutProduct
+                        key={index}
                         id={product.id}
                         title={product.title}
                         image={product.image}
