@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ProductBasketContext } from "../../../contexts/ProductBasketContext";
 import "./CheckoutProduct.css";
 
-const CheckoutProduct = ({ id, image, title, price, rating }) => {
+const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
    const [productBasket, setProductBasket] = useContext(ProductBasketContext);
 
    const removeProductFromBasket = () => {
@@ -32,9 +32,11 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
                      <p>🌟</p>
                   ))}
             </div>
-            <button onClick={removeProductFromBasket}>
-               Remove from Basket
-            </button>
+            {!hideButton && (
+               <button onClick={removeProductFromBasket}>
+                  Remove from Basket
+               </button>
+            )}
          </div>
       </div>
    );

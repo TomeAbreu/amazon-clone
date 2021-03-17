@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ProductBasketContext } from "../../contexts/ProductBasketContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { auth } from "../../config/firebase";
@@ -10,6 +10,7 @@ import { auth } from "../../config/firebase";
 function Header() {
    //Pull the products list from ProductContext using the useContext
    const [productBasket] = useContext(ProductBasketContext);
+   const history = useHistory();
 
    //Pull user from Auth Context
    const [user, setUser] = useContext(AuthContext);
@@ -19,6 +20,8 @@ function Header() {
       if (user) {
          //sign out
          auth.signOut();
+         //Redirect to login Page
+         history.push("/login");
       }
    };
    return (
@@ -48,11 +51,12 @@ function Header() {
                   </span>
                </div>
             </Link>
-
-            <div className="header_option">
-               <span className="header_optionLineOne">Returns</span>
-               <span className="header_optionLineTwo">& Orders</span>
-            </div>
+            <Link to="/orders">
+               <div className="header_option">
+                  <span className="header_optionLineOne">Returns</span>
+                  <span className="header_optionLineTwo">& Orders</span>
+               </div>
+            </Link>
             <div className="header_option">
                <span className="header_optionLineOne">Your</span>
                <span className="header_optionLineTwo">Prime</span>
