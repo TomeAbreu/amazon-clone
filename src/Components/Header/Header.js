@@ -4,11 +4,24 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { ProductBasketContext } from "../../contexts/ProductBasketContext";
+import { AuthContext } from "../../contexts/AuthContext";
+import { auth } from "../../config/firebase";
 
 function Header() {
    //Pull the products list from ProductContext using the useContext
    const [productBasket] = useContext(ProductBasketContext);
 
+   //Pull user from Auth Context
+   const [user, setUser] = useContext(AuthContext);
+
+   console.log(user);
+   //Function to handle authentication in header
+   const handleAuthentication = () => {
+      if (user) {
+         //sign out
+         auth.signOut();
+      }
+   };
    return (
       <div className="header">
          <Link to="/">
@@ -25,10 +38,18 @@ function Header() {
          </div>
 
          <div className="header_nav">
-            <div className="header_option">
-               <span className="header_optionLineOne">Hello Guest</span>
-               <span className="header_optionLineTwo">Sign In</span>
-            </div>
+            <Link to={!user && "/login"}>
+               {" "}
+               <div className="header_option" onClick={handleAuthentication}>
+                  <span className="header_optionLineOne">
+                     Hello {user ? user.email : "Guest"}
+                  </span>
+                  <span className="header_optionLineTwo">
+                     {user ? "Sign Out" : "Sign In"}
+                  </span>
+               </div>
+            </Link>
+
             <div className="header_option">
                <span className="header_optionLineOne">Returns</span>
                <span className="header_optionLineTwo">& Orders</span>

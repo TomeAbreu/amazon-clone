@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductProvider } from "./contexts/ProductBasketContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 ReactDOM.render(
    <React.StrictMode>
       {/* Wrap up product provider and gave access to all children components of the list of products*/}
-      <ProductProvider>
-         <App />
-      </ProductProvider>
+      <AuthProvider>
+         <ProductProvider>
+            <App />
+         </ProductProvider>
+      </AuthProvider>
    </React.StrictMode>,
    document.getElementById("root")
 );
