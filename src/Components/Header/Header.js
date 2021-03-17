@@ -14,7 +14,6 @@ function Header() {
    //Pull user from Auth Context
    const [user, setUser] = useContext(AuthContext);
 
-   console.log(user);
    //Function to handle authentication in header
    const handleAuthentication = () => {
       if (user) {

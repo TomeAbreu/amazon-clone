@@ -5,9 +5,17 @@ import {
    ProductBasketContext,
    getBasketTotalPrice,
 } from "../../../contexts/ProductBasketContext";
+import { useHistory } from "react-router-dom";
 
 const SubTotal = () => {
    const [productBasket] = useContext(ProductBasketContext);
+
+   //Get browser history
+   const history = useHistory();
+
+   const redirectToPaymentPage = (e) => {
+      history.push("/payment");
+   };
 
    return (
       <div className="subTotal">
@@ -29,7 +37,7 @@ const SubTotal = () => {
             thousandSeparator={true}
             prefix={"$"}
          />
-         <button>Proceed to Checkout</button>
+         <button onClick={redirectToPaymentPage}>Proceed to Checkout</button>
       </div>
    );
 };

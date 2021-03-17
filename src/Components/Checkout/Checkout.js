@@ -3,9 +3,11 @@ import "./Checkout.css";
 import SubTotal from "./SubTotal/SubTotal";
 import CheckoutProduct from "./CheckoutProduct/CheckoutProduct";
 import { ProductBasketContext } from "../../contexts/ProductBasketContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Checkout = () => {
    const [productBasket] = useContext(ProductBasketContext);
+   const [user, setUser] = useContext(AuthContext);
 
    return (
       <div className="checkout">
@@ -17,6 +19,7 @@ const Checkout = () => {
             />
 
             <div>
+               <h3>Hello, {user?.email}</h3>
                <h2 className="checkout_title">Your shopping basket</h2>
                {productBasket.map((product) => (
                   <CheckoutProduct
