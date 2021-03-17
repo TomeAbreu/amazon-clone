@@ -9,6 +9,11 @@ import { useEffect, useContext } from "react";
 import { auth } from "./config/firebase";
 import { AuthContext } from "./contexts/AuthContext";
 
+/*Stripe Element required import */
+import { Elements } from "@stripe/react-stripe-js";
+/*Import stripe library */
+import { stripePromise } from "./config/stripe";
+
 function App() {
    //Use Auth Context to get and update User Context prop to tell if User is login or not
    const [user, setUser] = useContext(AuthContext);
@@ -44,7 +49,9 @@ function App() {
                   {/* Header Component */}
                   <Header />
                   {/* Payment Component */}
-                  <Payment />
+                  <Elements stripe={stripePromise}>
+                     <Payment />
+                  </Elements>
                </Route>
                <Route path="/">
                   {/* Header Component */}
