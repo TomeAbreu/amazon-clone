@@ -4,12 +4,14 @@ This Project is a beginner friendly project I built using React. Some key Aspect
 
 -  Firebase Backend
 -  Firebase Authentication
+-  Firebase DataStore
+-  Firebase Cloud Function with Express API(functions directory)
 -  Payments with Stripe API
 -  Front-end with React js
 
 Deployed live using Firebase on https://clone-fa0a1.web.app/
 
-## Available Scripts
+## Available Scripts for Front-End App
 
 In the project directory, you can run:
 
@@ -27,9 +29,13 @@ Launches the test runner in the interactive watch mode.\
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+## Available Scripts for Back-End Cloud Function Firebase Express API
 
-### Firebase Deployment Steps With Firebase
+Inside functions folder run:
+
+### `npm run deploy`
+
+## Firebase Deployment APP Steps With Firebase
 
 -  firebase login
 -  firebase init
