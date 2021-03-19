@@ -9,7 +9,8 @@ This Project is a beginner friendly project I built using React. Some key Aspect
 -  Payments with Stripe API
 -  Front-end with React js
 
-Deployed live using Firebase on https://clone-fa0a1.web.app/
+Deployed live using Firebase on: https://clone-fa0a1.web.app/
+Deployed Cloud Function for Express API on: https://us-central1-clone-fa0a1.cloudfunctions.net/api
 
 ## Available Scripts for Front-End App
 
@@ -46,6 +47,12 @@ Inside functions folder run:
    -  Single Page -> Yes
    -  Setup Automatic Builds with Github -> No
 -  npm run build
--  firebase deploy
+-  firebase deploy --only hosting
+
+# Firebase Deployment Express API Steps With Firebase
+
+-  functions folder
+-  firebase deploy --only functions
+- Express API DEV URL: http://localhost:5001/clone-fa0a1/us-central1/api (change on axios.js file)
 
 ![Alt text](public/amazon-clone-print.PNG)
