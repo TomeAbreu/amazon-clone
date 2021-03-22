@@ -29,3 +29,20 @@
    border-color: #a88734 #9c7e31 #846a29;
    color: #111;
 }
+
+/* Media Queries */
+@media screen and (max-width:500px)
+ {
+   .subTotal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      width: auto;
+      height: 50px;
+      padding: 20px;
+      background-color: #f3f3f3;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+   }
+ }

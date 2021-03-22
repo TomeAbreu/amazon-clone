@@ -15,3 +15,26 @@
    padding: 10px;
    border-bottom: 1px solid lightgray;
 }
+
+/* Media Queries */
+@media screen and (max-width:500px)
+ {
+   .checkout {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background-color: white;
+      height: max-content;
+   }
+
+   .checkout_left {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+   }
+   .checkout_right {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+   }
+ }

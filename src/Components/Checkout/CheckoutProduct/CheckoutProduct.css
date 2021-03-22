@@ -29,3 +29,22 @@
    font-size: 17px;
    font-weight: 800;
 }
+
+
+
+/* Media Queries */
+@media screen and (max-width:500px)
+ {
+   
+
+   .checkoutProduct {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+   }
+
+   .checkoutProduct_info {
+      padding-left: 0px;
+   }
+ }
+
